@@ -37,7 +37,7 @@ trait Routing
         if (isset($this->address[3])) {
             foreach ($this->address as $key => $value) {
                 if ($key > 2) {
-                    $this->params[] = filter_var($value, FILTER_SANITIZE_STRING);
+                    $this->params[] = $this->fix_address_string($value);
                 }
 
             }
@@ -52,9 +52,9 @@ trait Routing
         //Set up the route and hold on to it.
 
         $this->route = [
-            'module' => ($this->address[0] == '' ? DEFAULT_MODULE : filter_var($this->address[0], FILTER_SANITIZE_STRING)),
-            'class' => ($this->address[1] == '' ? DEFAULT_CLASS : filter_var($this->address[1], FILTER_SANITIZE_STRING)),
-            'method' => ($this->address[2] == '' ? 'index' : filter_var($this->address[2], FILTER_SANITIZE_STRING)),
+            'module' => ($this->address[0] == '' ? DEFAULT_MODULE : $this->fix_address_string($this->address[0])),
+            'class' => ($this->address[1] == '' ? DEFAULT_CLASS : $this->fix_address_string($this->address[1])),
+            'method' => ($this->address[2] == '' ? 'index' : $this->fix_address_string($this->address[2])),
             'values' => $this->params,
         ];
 
@@ -63,35 +63,37 @@ trait Routing
 
     //Borrowing this from the spystuff fish bowl class.
     //It's going to need to change a little, but the mechanics are basically the same.
+    //As long as I'm the only writing against this, it should be fine, but if it's ever used
+    //as a general purpose framework (which I doubt, seriously) this would probably need need
+    //to be namespaced.
 
-    
-
-    public function implement_class(array $route = [])
+    public function implement_module()
     {
-        if ($route['class'] == 'default') {
-            $file = FILE_ROOT . '/app/classes/' . DEFAULT_CONTROLLER . '.php';
-            if (file_exists($file)) {
-                $this->safe_redirect(DEFAULT_CONTROLLER);
+        $this->get_route();
+
+        //Find your controller, and determine that the class exists.
+
+        $file = MODULE_ROOT . '/' . $this->route['module'] . '/app/controller/' . $this->route['class'] . '.php';
+
+        if (file_exists($file)) {
+
+            if (class_exists($this->route['class'])) {
+
+                $object = $this->route['class'];
+
+                if (method_exists($this->route['class'], $this->route['method'])) {
+
+                    $application_object = new $object();
+                    call_user_func([$application_object, $this->route['method']], $this);
+
+                } else {
+                    header("HTTP/1.0 404 Not Found");
+                    exit("Sorry, couldn't establish route for: {$this->route['class']}/{$this->route['method']}");
+                }
             } else {
-                exit("class does not exist.");
-            }
-        } else {
-            $file = FILE_ROOT . '/app/classes/' . $route['class'] . '.class.php';
-            if (file_exists($file)) {
-                $object = $route['class'];
-            } else {
+                header("HTTP/1.0 404 Not Found");
                 print "Trying to open: {$file}\n";
                 exit("class does not exist.");
-            }
-            // So, to avoid the php strict errors which are clogging up the logs,
-            // we need to create a static resource. This should do it.
-            $application_object = new $object();
-            if (method_exists($route['class'], $route['method'])) {
-                call_user_func([$application_object, $route['method']], $this);
-            } else {
-              
-                header("HTTP/1.0 404 Not Found");
-                exit("Sorry, couldn't establish route for: {$route['class']}/{$route['method']}");
             }
         }
     }
