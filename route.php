@@ -44,7 +44,7 @@ trait Routing
         }
 
         //Setting up blank array space, in case we need it.
-        
+
         if (!isset($this->address[0])) {$this->address[0] = '';}
         if (!isset($this->address[1])) {$this->address[1] = '';}
         if (!isset($this->address[2])) {$this->address[2] = '';}
@@ -59,6 +59,41 @@ trait Routing
         ];
 
         return $this->route;
+    }
+
+    //Borrowing this from the spystuff fish bowl class.
+    //It's going to need to change a little, but the mechanics are basically the same.
+
+    
+
+    public function implement_class(array $route = [])
+    {
+        if ($route['class'] == 'default') {
+            $file = FILE_ROOT . '/app/classes/' . DEFAULT_CONTROLLER . '.php';
+            if (file_exists($file)) {
+                $this->safe_redirect(DEFAULT_CONTROLLER);
+            } else {
+                exit("class does not exist.");
+            }
+        } else {
+            $file = FILE_ROOT . '/app/classes/' . $route['class'] . '.class.php';
+            if (file_exists($file)) {
+                $object = $route['class'];
+            } else {
+                print "Trying to open: {$file}\n";
+                exit("class does not exist.");
+            }
+            // So, to avoid the php strict errors which are clogging up the logs,
+            // we need to create a static resource. This should do it.
+            $application_object = new $object();
+            if (method_exists($route['class'], $route['method'])) {
+                call_user_func([$application_object, $route['method']], $this);
+            } else {
+              
+                header("HTTP/1.0 404 Not Found");
+                exit("Sorry, couldn't establish route for: {$route['class']}/{$route['method']}");
+            }
+        }
     }
 
 }
