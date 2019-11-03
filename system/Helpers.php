@@ -92,7 +92,7 @@ trait Helpers
         foreach ($big_list as $file) {
 
             //So, if we have a php file, and it's not on the ignore list, add it to the required files list.
-            if (!strpos($file, 'view') == -1) {
+            if (!strpos($file, 'view/') == -1) {
                 $ending = substr($file, -4, 4);
                 if ($ending == '.php' && !in_array($file, $ignored_files)) {
                     $required_files[] = $file;
