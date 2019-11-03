@@ -9,5 +9,5 @@ class System
 {
     use Helpers;
     use Routing;
-  //  use Rendering;
+    use Rendering;
 }

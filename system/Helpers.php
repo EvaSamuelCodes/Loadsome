@@ -84,8 +84,9 @@ trait Helpers
         $ignored_files = [
             PUBLIC_ROOT . '/config.php',
             PUBLIC_ROOT . '/index.php',
-            PUBLIC_ROOT . '/system/Bootstrap.php',
-            PUBLIC_ROOT . '/system/Core.php',
+            PUBLIC_ROOT . '/system/Routing.php',
+            PUBLIC_ROOT . '/system/Rendering.php',
+            PUBLIC_ROOT . '/system/System.php',
             PUBLIC_ROOT . '/lib/simple-orm/example.php',
         ];
 

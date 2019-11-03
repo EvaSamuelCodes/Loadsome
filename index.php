@@ -10,6 +10,7 @@ if (DEBUG) {
 
 require_once PUBLIC_ROOT . '/system/Helpers.php';
 require_once PUBLIC_ROOT . '/system/Routing.php';
+require_once PUBLIC_ROOT . '/system/Rendering.php';
 require_once PUBLIC_ROOT . '/system/System.php';
 require_once PUBLIC_ROOT . '/system/Bootstrap.php';
 
