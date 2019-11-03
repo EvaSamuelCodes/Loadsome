@@ -4,7 +4,7 @@
 define('DEBUG', true);
 
 define('DEFAULT_MODULE', 'Loadsome');
-define('DEFAULT_CLASS', 'admin');
+define('DEFAULT_CLASS', 'Admin');
 
 define('PUBLIC_ROOT', __DIR__);
 define('MODULE_ROOT', PUBLIC_ROOT . '/modules');
