@@ -100,6 +100,8 @@ trait Helpers
             }
 
         }
+        $this->pretty($big_list);
+        exit;
    
         if (count($required_files)) {
             foreach ($required_files as $file) {
