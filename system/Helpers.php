@@ -101,17 +101,11 @@ trait Helpers
                 $required_files[] = $file;
             }
         }
-        $this->pretty("Try this");
-        $this->pretty($required_files);
 
-        exit;
-
-        if (count($required_array)) {
-            foreach ($required_array as $file) {
+        if (count($required_files)) {
+            foreach ($required_files as $file) {
                 if (file_exists($file)) {
-                    if (strpos($file, '.php') != -1) {
-                        require_once $file;
-                    }
+                    require_once $file;
                 }
             }
         } else {
