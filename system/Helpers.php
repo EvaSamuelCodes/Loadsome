@@ -81,6 +81,9 @@ trait Helpers
     {
         $required_array = $this->get_dir($dirname);
 
+        $this->pretty($required_array);
+        exit;
+
         if (count($required_array)) {
             foreach ($required_array as $file) {
                 if (file_exists($file)) {
