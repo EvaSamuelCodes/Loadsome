@@ -88,11 +88,11 @@ trait Routing
 
                     //Handle the view automatically, if it exists.
 
-                    $view = MODULE_ROOT.'/'. $this->route['module'].'/app/view/'.$this->route['class'] . '.php';
+                    $view = MODULE_ROOT . '/' . $this->route['module'] . '/app/view/' . $this->route['class'] . '/' . $this->route['method'] . '.php';
                     $this->pretty($view);
-                    if(file_exists($view)){
+                    if (file_exists($view)) {
                         require_once $view;
-                    }else{
+                    } else {
                         print "There is no view to see.";
                     }
 
