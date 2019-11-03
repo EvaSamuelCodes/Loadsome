@@ -2,9 +2,11 @@
 
     class Admin extends Core{
         public function index(){
-            $route = $this->get_route();
+            $this->get_route();
+            $this->render();
         }
         public function web_page(){
-            $route = $this->get_route();
+            $this->get_route();
+            $this->render();
         }
     }

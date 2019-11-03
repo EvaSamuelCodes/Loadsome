@@ -5,5 +5,5 @@
 </p>
 
 <?php
-$this->pretty($route);
+$this->pretty($this->route);
 ?>
