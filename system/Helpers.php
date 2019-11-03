@@ -98,10 +98,9 @@ trait Helpers
                     $required_files[] = $file;
                 }
             }
-            $this->pretty($required_files);
 
         }
-
+   
         if (count($required_files)) {
             foreach ($required_files as $file) {
                 if (file_exists($file)) {
