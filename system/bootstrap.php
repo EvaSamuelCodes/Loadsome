@@ -1,10 +1,7 @@
 <?php
 
-class Bootstrap extends core
+class Bootstrap extends Core
 {
-    use Helpers;
-    use Routing;
-
     public function __construct()
     {
         $this->require_all(PUBLIC_ROOT);

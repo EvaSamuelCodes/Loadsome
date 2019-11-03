@@ -1,6 +1,6 @@
 <?php 
 
-    class Admin extends Bootstrap{
+    class Admin extends Core{
 
         use Routing;
         use Helpers;
