@@ -89,6 +89,7 @@ trait Helpers
             PUBLIC_ROOT . '/index.php',
             PUBLIC_ROOT . '/system/Bootstrap.php',
             PUBLIC_ROOT . '/system/Core.php',
+            PUBLIC_ROOT . '/lib/simple-orm/example.php',
         ];
 
         foreach ($required_array as $file) {
