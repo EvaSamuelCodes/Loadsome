@@ -84,7 +84,7 @@ trait Routing
                 if (method_exists($this->route['class'], $this->route['method'])) {
 
                     $application_object = new $object();
-                    call_user_func($application_object, $this->route, $this);
+                    call_user_func([$application_object, $this->route['method']], $this);
 
                 } else {
                     header("HTTP/1.0 404 Not Found");
