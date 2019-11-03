@@ -84,7 +84,7 @@ trait Routing
                 if (method_exists($this->route['class'], $this->route['method'])) {
 
                     $application_object = new $object();
-                    call_user_func([$application_object, $this->route['method'], $this->route['params']],$this);
+                    call_user_func([$application_object, $this->route['method'], $this->route['values']], $this);
 
                 } else {
                     header("HTTP/1.0 404 Not Found");
@@ -95,7 +95,7 @@ trait Routing
                 print "Trying to open: {$file}\n";
                 exit("class does not exist.");
             }
-        }else{
+        } else {
             header("HTTP/1.0 404 Not Found");
             print "Trying to open: {$file}\n";
             exit("Module does not exist.");
