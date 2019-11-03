@@ -79,7 +79,7 @@ trait Helpers
      */
     public function require_all(string $dirname = '')
     {
-        $required_array = $this->get_dir($dirname);
+        $required_array = $this->get_dir($dirname,[]);
 
         if (count($required_array)) {
             foreach ($required_array as $file) {
