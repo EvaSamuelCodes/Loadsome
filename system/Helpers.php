@@ -29,10 +29,10 @@ trait Helpers
      * pretty
      * Prints the contents of an array string or object in an unformatted sting.
      *
-     * @param string $thing
+     * @param variable $thing
      * @return void
      */
-    public function pretty(string $thing)
+    public function pretty($thing)
     {
         if (strlen($thing)) {
             if (is_array($thing) || is_object($thing)) {
@@ -123,12 +123,12 @@ trait Helpers
         exit;
     }
 
- /**
-  * is_session_started
-  * Tells you if you're in an active session.
-  *
-  * @return boolean
-  */
+    /**
+     * is_session_started
+     * Tells you if you're in an active session.
+     *
+     * @return boolean
+     */
     public function is_session_started(): bool
     {
         if (php_sapi_name() !== 'cli') {
