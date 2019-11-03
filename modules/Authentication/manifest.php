@@ -5,7 +5,7 @@
 
 $enabled = [
     [
-        'module_name' => 'Loadsome',
+        'module_name' => 'Loadsome Authentication',
         'module_type'=> 'ui',
         'module_default_class' => 'Loadsome',
         'version' => 1,
