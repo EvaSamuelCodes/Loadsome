@@ -1,6 +1,6 @@
 <?php
 
-class Bootstrap
+class Bootstrap extends core
 {
     use Helpers;
     use Routing;

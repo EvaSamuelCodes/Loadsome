@@ -6,8 +6,8 @@ trait Routing
     public $params = [];
     public $route = [];
 
-    //The format on this one's a little different than the one in the store app
-    //because this one's module driven. So there's an extra paramater. Also, a values array. :) -Ev
+    // The format on this one's a little different than the one in the store app
+    // because this one's module driven. So there's an extra paramater. Also, a values array. :) -Ev
 
     /*format like this:
     http://localhost:8080/Bravheart/Freedom/Monkey/Scream/Plastic/Genius
@@ -32,7 +32,7 @@ trait Routing
         $this->address = explode('/', substr($_SERVER['REQUEST_URI'], 1, 255)); //you don't need more than this
         $this->params = [];
 
-        //Build your paramaters.
+        // Build your paramaters.
 
         if (isset($this->address[3])) {
             foreach ($this->address as $key => $value) {
@@ -43,13 +43,13 @@ trait Routing
             }
         }
 
-        //Setting up blank array space, in case we need it.
+        // Setting up blank array space, in case we need it.
 
         if (!isset($this->address[0])) {$this->address[0] = '';}
         if (!isset($this->address[1])) {$this->address[1] = '';}
         if (!isset($this->address[2])) {$this->address[2] = '';}
 
-        //Set up the route and hold on to it.
+        // Set up the route and hold on to it.
 
         $this->route = [
             'module' => ($this->address[0] == '' ? DEFAULT_MODULE : $this->fix_address_string($this->address[0])),
@@ -61,17 +61,17 @@ trait Routing
         return $this->route;
     }
 
-    //Borrowing this from the spystuff fish bowl class.
-    //It's going to need to change a little, but the mechanics are basically the same.
-    //As long as I'm the only writing against this, it should be fine, but if it's ever used
-    //as a general purpose framework (which I doubt, seriously) this would probably need need
-    //to be namespaced.
+    // Borrowing this from the spystuff fish bowl class.
+    // It changed a little, but the mechanics are basically the same.
+    // As long as I'm the only one writing against this, it should be fine, but if it's ever used
+    // as a general purpose framework (which I doubt, seriously) this would probably need need
+    // to be classed and namespaced.
 
     public function implement_module()
     {
         $this->get_route();
 
-        //Find your controller, and determine that the class exists.
+        // Find your controller, and determine that the class exists.
 
         $file = MODULE_ROOT . '/' . $this->route['module'] . '/app/controller/' . $this->route['class'] . '.php';
 
