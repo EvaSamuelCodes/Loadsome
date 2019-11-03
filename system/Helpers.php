@@ -100,7 +100,7 @@ trait Helpers
             }
 
         }
-        $this->pretty($big_list);
+        $this->pretty($required_files);
         exit;
    
         if (count($required_files)) {
