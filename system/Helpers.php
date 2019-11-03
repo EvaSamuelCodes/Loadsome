@@ -101,9 +101,9 @@ trait Helpers
             }
 
         }
-        $this->pretty($required_files);
-        exit;
-   
+        /*   $this->pretty($required_files);
+        exit; */
+
         if (count($required_files)) {
             foreach ($required_files as $file) {
                 if (file_exists($file)) {
