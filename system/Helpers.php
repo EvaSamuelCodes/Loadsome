@@ -34,7 +34,7 @@ trait Helpers
      */
     public function pretty($thing)
     {
-        if (strlen($thing)) {
+       // if (strlen($thing)) {
             if (is_array($thing) || is_object($thing)) {
                 print "<pre>\n";
                 print_r($thing);
@@ -44,7 +44,7 @@ trait Helpers
                 print $thing;
                 print "</pre>";
             }
-        }
+       // }
     }
     /**
      * get_dir
