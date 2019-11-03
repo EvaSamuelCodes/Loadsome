@@ -1,6 +1,6 @@
 <?php 
 
-    class Admin extends Core{
+    class Admin extends System{
         public function index(){
             $this->get_route();
             $this->render();

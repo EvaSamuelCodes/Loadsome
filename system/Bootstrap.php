@@ -1,6 +1,6 @@
 <?php
 
-class Bootstrap extends Core
+class Bootstrap extends System
 {
     public function __construct()
     {

@@ -5,8 +5,8 @@
 // 2. It's in the middle, so if there's a piece of functionality that needs to go everywhere... 
 //    this is an easy way to go about doing it.
 
-class Core{
+class System{
     use Helpers;
     use Routing;
-    use Rendering;
+ //   use Rendering;
 }
