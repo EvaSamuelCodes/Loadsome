@@ -1,5 +1,5 @@
 <?php
-trait Views
+trait Rendering
 {
     public function render()
     {
