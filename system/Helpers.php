@@ -34,17 +34,17 @@ trait Helpers
      */
     public function pretty($thing)
     {
-       // if (strlen($thing)) {
-            if (is_array($thing) || is_object($thing)) {
-                print "<pre>\n";
-                print_r($thing);
-                print "</pre>\n";
-            } else {
-                print "<pre>";
-                print $thing;
-                print "</pre>";
-            }
-       // }
+        // if (strlen($thing)) {
+        if (is_array($thing) || is_object($thing)) {
+            print "<pre>\n";
+            print_r($thing);
+            print "</pre>\n";
+        } else {
+            print "<pre>";
+            print $thing;
+            print "</pre>";
+        }
+        // }
     }
     /**
      * get_dir
@@ -54,7 +54,7 @@ trait Helpers
      * @param array $results
      * @return array
      */
-    public function get_dir(string $dir, array &$results=[])
+    public function get_dir(string $dir, array &$results = [])
     {
         $files = scandir($dir);
 
@@ -84,16 +84,24 @@ trait Helpers
         $this->pretty($required_array);
 
         $required_files = [];
+        $ignored_files = [
+            PUBLIC_ROOT . '/config.php',
+            PUBLIC_ROOT . 'index.php',
+            PUBLIC_ROOT . '/system/Bootstrap.php',
+            PUBLIC_ROOT . '/system/Core.php',
+        ];
 
-        foreach($required_array as $file){
+        foreach ($required_array as $file) {
+
+            //So, if we have a php file, and it's not on the ignore list, add it to the required files list.
+
             $ending = substr($file, -4, 4);
-            if($ending == '.php'){
+            if ($ending == '.php' && !in_array($file, $ignored_files)) {
                 $required_files[] = $file;
             }
         }
         $this->pretty("Try this");
         $this->pretty($required_files);
-
 
         exit;
 
