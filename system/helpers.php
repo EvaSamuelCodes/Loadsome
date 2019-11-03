@@ -34,7 +34,7 @@ trait Helpers
      */
     public function pretty(string $thing)
     {
-        if ($thing) {
+        if (strlen($thing)) {
             if (is_array($thing) || is_object($thing)) {
                 print "<pre>\n";
                 print_r($thing);

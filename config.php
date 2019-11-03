@@ -1,16 +1,16 @@
 <?php
 //Global config.
 
-define('DEFAULT_MODULE','Loadsome');
-define('DEFAULT_CLASS','admin');
+define('DEBUG', true);
+
+define('DEFAULT_MODULE', 'Loadsome');
+define('DEFAULT_CLASS', 'admin');
 
 define('PUBLIC_ROOT', __DIR__);
-define('MODULE_ROOT', PUBLIC_ROOT.'/modules');
+define('MODULE_ROOT', PUBLIC_ROOT . '/modules');
 
-define('APP_NAME','Loadsome');
-define('HOST','localhost');
-define('USER','root');
-define('PASSWORD','');
-define('SCHEMA','loadsome');
-
-
+define('APP_NAME', 'Loadsome');
+define('HOST', 'localhost');
+define('USER', 'root');
+define('PASSWORD', '');
+define('SCHEMA', 'loadsome');
