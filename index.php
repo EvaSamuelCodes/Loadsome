@@ -13,7 +13,4 @@ require_once PUBLIC_ROOT . '/system/Routing.php';
 require_once PUBLIC_ROOT . '/system/Core.php';
 require_once PUBLIC_ROOT . '/system/Bootstrap.php';
 
-$Core = new Core();
-
-$Routing = $Core->get_route();
-$Core->pretty($Routing);
+new Bootstrap();
