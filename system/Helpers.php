@@ -98,6 +98,7 @@ trait Helpers
                     $required_files[] = $file;
                 }
             }
+            $this->pretty($required_files);
 
         }
 
