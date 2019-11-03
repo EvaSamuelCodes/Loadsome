@@ -54,7 +54,7 @@ trait Helpers
      * @param array $results
      * @return array
      */
-    public function get_dir(string $dir, array &$results)
+    public function get_dir(string $dir, array &$results=[])
     {
         $files = scandir($dir);
 
@@ -79,7 +79,7 @@ trait Helpers
      */
     public function require_all(string $dirname = '')
     {
-        $required_array = $this->get_dir($dirname,[]);
+        $required_array = $this->get_dir($dirname);
 
         if (count($required_array)) {
             foreach ($required_array as $file) {
