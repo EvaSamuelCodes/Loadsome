@@ -95,6 +95,10 @@ trait Routing
                 print "Trying to open: {$file}\n";
                 exit("class does not exist.");
             }
+        }else{
+            header("HTTP/1.0 404 Not Found");
+            print "Trying to open: {$file}\n";
+            exit("Module does not exist.");
         }
     }
 
