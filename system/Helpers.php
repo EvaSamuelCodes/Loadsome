@@ -79,10 +79,7 @@ trait Helpers
      */
     public function require_all(string $dirname = '')
     {
-        $required_array = $this->get_dir($dirname);
-
-        $this->pretty($required_array);
-
+        $big_list = $this->get_dir($dirname);
         $required_files = [];
         $ignored_files = [
             PUBLIC_ROOT . '/config.php',
@@ -92,7 +89,7 @@ trait Helpers
             PUBLIC_ROOT . '/lib/simple-orm/example.php',
         ];
 
-        foreach ($required_array as $file) {
+        foreach ($big_list as $file) {
 
             //So, if we have a php file, and it's not on the ignore list, add it to the required files list.
 
