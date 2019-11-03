@@ -1,6 +1,6 @@
 <?php
 
-require 'config.php';
+require_once 'config.php';
 
 if (DEBUG) {
     ini_set('display_errors', 1);
@@ -8,11 +8,12 @@ if (DEBUG) {
     error_reporting(E_ALL);
 }
 
-require PUBLIC_ROOT . '/system/Helpers.php';
-require PUBLIC_ROOT . '/system/Routing.php';
-require PUBLIC_ROOT . '/system/Bootstrap.php';
+require_once PUBLIC_ROOT . '/system/Helpers.php';
+require_once PUBLIC_ROOT . '/system/Routing.php';
+require_once PUBLIC_ROOT . '/system/Core.php';
+require_once PUBLIC_ROOT . '/system/Bootstrap.php';
 
-new Bootstrap();
+$Core = new Core();
 
-print "<pre>";
-print_r($Routing);
+$Routing = $Core->get_route();
+$Core->pretty($Routing);
