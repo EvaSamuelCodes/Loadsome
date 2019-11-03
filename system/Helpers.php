@@ -63,7 +63,7 @@ trait Helpers
             if (!is_dir($path)) {
                 $results[] = $path;
             } else if ($value != "." && $value != "..") {
-                get_dir($path, $results);
+                $this->get_dir($path, $results);
                 $results[] = $path;
             }
         }
