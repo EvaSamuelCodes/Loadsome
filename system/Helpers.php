@@ -18,7 +18,7 @@ trait Helpers
     {
 
         //Sanitize first
-        $new_address = filter_var(address, FILTER_SANITIZE_STRING);
+        $new_address = filter_var($address, FILTER_SANITIZE_STRING);
 
         //Reformat and return
         return preg_replace('/\s+/', '-', $new_address);
