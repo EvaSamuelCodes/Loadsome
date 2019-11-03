@@ -82,6 +82,19 @@ trait Helpers
         $required_array = $this->get_dir($dirname);
 
         $this->pretty($required_array);
+
+        $required_files = [];
+
+        foreach($required_array as $file){
+            $ending = substr($file, -4, 4);
+            if($ending == '.php'){
+                $required_files[] = $file;
+            }
+        }
+        $this->pretty("Try this");
+        $this->pretty($required_files);
+
+
         exit;
 
         if (count($required_array)) {
