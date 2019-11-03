@@ -86,7 +86,7 @@ trait Helpers
         $required_files = [];
         $ignored_files = [
             PUBLIC_ROOT . '/config.php',
-            PUBLIC_ROOT . 'index.php',
+            PUBLIC_ROOT . '/index.php',
             PUBLIC_ROOT . '/system/Bootstrap.php',
             PUBLIC_ROOT . '/system/Core.php',
         ];
